@@ -1,0 +1,249 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+body {
+  //height: 100vh;
+  overflow: hidden;
+  background-color: $background-grey;
+}
+
+.container_load {
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__loading {
+    width: 200px;
+    height: 200px;
+    @include card_effect(20px);
+    background-color: $main-white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    z-index: 10000;
+    
+    & label {
+      color: $main-blue;
+      font-size: 20px;
+    }
+  }
+}
+
+.container_users {
+  height: calc(100vh - 36.61px);    //-height of the pagination component
+  overflow-y: scroll;
+}
+
+.selector {
+  margin: 10px 10px 20px 20px;
+  display: flex;
+  gap: 5px;
+
+  select {
+    padding: 0 10px;
+    border: 2px solid #000000;
+    border-radius: 3px;
+    outline: none;
+
+    &:focus {
+      border: 2px solid $main-blue;
+    }
+  }
+}
+
+.container-cards {
+  width: 100%;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+
+  &__card {
+    width: 90%;
+    font-size: 12px;
+    text-align: center;
+    padding: 10px;
+    @include card_effect(20px);
+
+    @media screen and (min-width: 450px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: left;
+    }
+
+    @media screen and (min-width: 650px) {
+      font-size: 14px;
+      flex-direction: row;
+    }
+
+    & label {
+      font-size: 10px;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    &--up {
+
+      &--left {
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+
+        img {
+          width: 140px;
+          height: 154px;
+          @include card_effect(30px);
+        }
+      }
+
+      &--right {
+        &--email {
+          font-size: 10px;
+
+          @media screen and (min-width: 450px) {
+            font-size: 12px;
+          }
+        }
+      }
+
+      &--right>p {
+        color: $main-blue;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      @media screen and (min-width: 450px) {
+        display: flex;
+        gap: 20px;
+      }
+    }
+
+    &--down {
+
+      @media screen and (min-width: 450px) {
+        width: 100%;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      @media screen and (min-width: 650px) {
+        margin-top: 0;
+        justify-content: left;
+      }
+
+      @media screen and (min-width: 950px) {
+        justify-content: space-evenly;
+      }
+    }
+
+    &--button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      @media screen and (min-width: 650px) {
+        position: relative;
+        align-self: flex-end;
+      }
+
+      .card__deploy {
+        margin-top: 20px;
+        cursor: pointer;
+        @include icon_button($main-blue);
+
+        @media screen and (min-width: 650px) {
+          margin: 0;
+        }
+      }
+
+      &--options {
+        background-color: $main-white;
+        height: 0;
+        overflow: hidden;
+        opacity: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        @include card_effect(30px);
+        transition: height 0.2s, opacity 0.5s linear;
+
+        @media screen and (min-width: 650px) {
+          @include card_effect(5px);
+          background-color: $pure-white;
+          flex-direction: column;
+          align-items: flex-start;
+          padding-left: 10px;
+          position: absolute;
+          top: 40px;
+        }
+
+        &--edit,
+        &--delete {
+          cursor: pointer;
+
+          &:active {
+            transform: scale(0.95)
+          }
+
+          .card__edit {
+            @include icon_button($aux-yellow);
+            @include circle_icon($aux-yellow);
+          }
+
+          .card__delete {
+            @include icon_button($aux-red);
+            @include circle_icon($aux-red);
+          }
+
+          @media screen and (min-width: 650px) {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+          }
+
+          & label {
+            display: none;
+            overflow: hidden;
+
+            @media screen and (min-width: 650px) {
+              font-size: 12px;
+              font-weight: normal;
+              font-style: normal;
+              display: block;
+              overflow: visible;
+              cursor: pointer;
+            }
+          }
+        }
+
+      }
+    }
+  }
+
+  //Click event selector attributes
+  .showOptions {
+    width: 100px;
+    height: 50px;
+    margin-top: 10px;
+    padding: 10px;
+    overflow: visible;
+    opacity: 1;
+
+    @media screen and (min-width: 650px) {
+      height: 80px;
+    }
+  }
+
+}

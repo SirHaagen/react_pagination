@@ -1,0 +1,24 @@
+@use './variables' as *;
+
+@mixin card_effect ($radius) {
+  border-radius: $radius;
+  background: #dedede;
+  box-shadow: 5px 5px 10px #cecece,
+    -5px -5px 10px #eeeeee;
+}
+
+@mixin icon_button($color) {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: $main-white;
+
+  &>svg>* {
+    color: $color;
+  }
+}
+
+@mixin circle_icon($color) {
+  border: 3px solid $color;
+}

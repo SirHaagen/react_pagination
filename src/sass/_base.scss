@@ -1,0 +1,26 @@
+@use './fonts' as *;
+
+html, body{
+  font-size: 100%; 
+  font-family: $font-poppins;
+}
+
+*, *::before, *::after{
+  box-sizing: border-box;  
+  margin: 0;
+  padding: 0;
+  color: #252525;
+}
+
+li{
+  list-style: none;
+}
+
+a, a:active, a:visited{
+  text-decoration: none;
+}
+
+button{
+  border: none;
+  font-family: $font-poppins;
+}
